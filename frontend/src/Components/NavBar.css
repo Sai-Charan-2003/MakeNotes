@@ -1,0 +1,28 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: rgb(8, 172, 223);
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-links .nav-item {
+  margin-left: 1rem;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.navbar-brand {
+  margin-left: 10px;
+}

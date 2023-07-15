@@ -1,0 +1,29 @@
+.note {
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: calc(33.33% - 2rem);
+  margin: 1rem;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+.delete-icon {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  cursor: pointer;
+}
+
+.note-heading {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.note-text {
+  font-size: 1rem;
+}
