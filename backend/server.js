@@ -22,6 +22,7 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Expose-Headers", "set-cookie");
   next();
 });
 
@@ -45,7 +46,7 @@ app.post("/signup", modelMiddleware, async (req, res) => {
       { expiresIn: "1h" }
     );
     res.cookie("token", token, {
-      // httpOnly: true,
+      httpOnly: true,
       secure: true,
       sameSite: "none",
     });
@@ -68,7 +69,7 @@ app.post("/login", modelMiddleware, async (req, res) => {
         { expiresIn: "1h" }
       );
       res.cookie("token", token, {
-        // httpOnly: true,
+        httpOnly: true,
         secure: true,
         sameSite: "none",
       });
