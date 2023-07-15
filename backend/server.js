@@ -45,7 +45,7 @@ app.post("/signup", modelMiddleware, async (req, res) => {
       { expiresIn: "1h" }
     );
     res.cookie("token", token, {
-      httpOnly: true,
+      // httpOnly: true,
       secure: true,
       sameSite: "none",
     });
@@ -68,7 +68,7 @@ app.post("/login", modelMiddleware, async (req, res) => {
         { expiresIn: "1h" }
       );
       res.cookie("token", token, {
-        httpOnly: true,
+        // httpOnly: true,
         secure: true,
         sameSite: "none",
       });
@@ -124,7 +124,8 @@ app.delete("/delete", modelMiddleware, jwtVerify, async (req, res) => {
 });
 
 app.get("/logout", jwtVerify, (req, res) => {
-  res.clearCookie("token").send({ success: true });
+  res.clearCookie("token");
+  res.send({ success: true });
 });
 
 app.listen(process.env.PORT, () =>
