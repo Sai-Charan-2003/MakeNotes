@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import Note from "./Note";
+import { serverUrl } from "../serverUrl";
 
 function RenderNote() {
   const [allNotes, setAllNotes] = useState([]);
 
   const getNotes = () => {
-    fetch("http://localhost:4000/notes", {
+    fetch(`${serverUrl}notes`, {
       method: "GET",
       credentials: "include",
     })

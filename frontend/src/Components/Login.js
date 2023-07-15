@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { serverUrl } from "../serverUrl";
 import "./Login.css";
 
 function Login() {
@@ -8,7 +9,7 @@ function Login() {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:4000/login", {
+    fetch(`${serverUrl}login`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

@@ -1,7 +1,7 @@
 import "./CreateNote.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import "dotenv";
+import { serverUrl } from "../serverUrl";
 
 function CreateNote() {
   const [heading, setHeading] = useState("");
@@ -11,7 +11,7 @@ function CreateNote() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:4000/createnote`, {
+    fetch(`${serverUrl}createnote`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

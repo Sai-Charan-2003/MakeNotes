@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignUp.css";
+import { serverUrl } from "../serverUrl";
 
 function SignUp() {
   const [signup, setSignup] = useState({
@@ -11,7 +12,7 @@ function SignUp() {
 
   const formSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:4000/signup", {
+    fetch(`${serverUrl}signup`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

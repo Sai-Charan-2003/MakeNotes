@@ -1,11 +1,12 @@
 import "./Note.css";
 import { FaTrash } from "react-icons/fa";
+import { serverUrl } from "../serverUrl";
 
 function Note(props) {
   //eslint-disable-next-line
   var response;
   const handleDelete = () => {
-    fetch("http://localhost:4000/delete", {
+    fetch(`${serverUrl}delete`, {
       method: "DELETE",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({

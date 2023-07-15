@@ -1,9 +1,10 @@
 import Spinner from "react-bootstrap/Spinner";
 import { useNavigate } from "react-router-dom";
+import { serverUrl } from "../serverUrl";
 
 function LogOut() {
   const navigate = useNavigate();
-  fetch("http://localhost:4000/logout", {
+  fetch(`${serverUrl}logout`, {
     method: "GET",
     credentials: "include",
   })
