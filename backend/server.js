@@ -22,7 +22,6 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Expose-Headers", "set-cookie");
   next();
 });
 
@@ -125,7 +124,12 @@ app.delete("/delete", modelMiddleware, jwtVerify, async (req, res) => {
 });
 
 app.get("/logout", jwtVerify, (req, res) => {
-  res.clearCookie("token");
+  res.cookie("token", "", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    expires: new Date(0),
+  });
   res.send({ success: true });
 });
 
