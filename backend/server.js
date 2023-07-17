@@ -120,7 +120,7 @@ app.delete("/delete", modelMiddleware, jwtVerify, async (req, res) => {
     }
   );
   if (del.modifiedCount === 1) res.json(delNote);
-  else res.json({ error: "note is note updated" });
+  else res.json({ error: "note is not updated" });
 });
 
 app.get("/logout", jwtVerify, (req, res) => {
