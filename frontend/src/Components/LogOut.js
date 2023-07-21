@@ -1,4 +1,3 @@
-import Spinner from "react-bootstrap/Spinner";
 import { useNavigate } from "react-router-dom";
 import { serverUrl } from "../serverUrl";
 
@@ -14,7 +13,7 @@ function LogOut() {
     })
     .catch((err) => console.log(err));
 
-  return <Spinner animation="grow" />;
+  return <></>;
 }
 
 export default LogOut;

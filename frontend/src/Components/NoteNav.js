@@ -1,34 +1,31 @@
 import { Outlet } from "react-router-dom";
-import { Navbar, Nav, Container } from "react-bootstrap";
 import "./NoteNav.css";
 
-function NavBar() {
+function NoteNav() {
   return (
     <div className="NavBar">
       <nav className="nav">
-        <Navbar>
-          <Navbar.Brand className="navbar-brand text-light" href="/notes">
-            MakeNotes
-          </Navbar.Brand>
-          <Container>
-            <Nav className="nav-links">
-              <Nav.Item>
-                <Nav.Link className="text-light" href="/createnote">
-                  Create Note
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link className="text-light" href="/logout">
-                  Log Out
-                </Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Container>
-        </Navbar>
+        <div className="navbar">
+          <a href="/notes" className="navbar-brand text-light">
+            <h1>MakeNotes</h1>
+          </a>
+          <ul className="nav-links">
+            <li className="nav-item">
+              <a className="text-light" href="/createnote">
+                Create Note
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="text-light" href="/logout">
+                Log out
+              </a>
+            </li>
+          </ul>
+        </div>
       </nav>
       <Outlet />
     </div>
   );
 }
 
-export default NavBar;
+export default NoteNav;
