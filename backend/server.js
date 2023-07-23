@@ -124,13 +124,12 @@ app.delete("/delete", modelMiddleware, jwtVerify, async (req, res) => {
 });
 
 app.get("/logout", jwtVerify, (req, res) => {
-  res.setHeader("set-cookie", "token=; max-age=0");
-  // res.cookie("token", "", {
-  //   httpOnly: true,
-  //   secure: true,
-  //   sameSite: "none",
-  //   expires: new Date(0),
-  // });
+  res.cookie("token", "", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    expires: new Date(0),
+  });
   res.send({ success: true });
 });
 
