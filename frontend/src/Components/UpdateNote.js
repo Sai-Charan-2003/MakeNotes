@@ -1,12 +1,13 @@
-import "./CreateNote.css";
+import "./UpdateNote.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { serverUrl } from "../serverUrl";
 import { useForm } from "react-hook-form";
 
-function CreateNote() {
-  const [heading, setHeading] = useState("");
-  const [text, setText] = useState("");
+function UpdateNote() {
+  const location = useLocation();
+  const [heading, setHeading] = useState(location.state.heading);
+  const [text, setText] = useState(location.state.text);
   const navigate = useNavigate();
   const {
     register,
@@ -15,14 +16,15 @@ function CreateNote() {
   } = useForm();
 
   const onSubmit = (data) => {
-    fetch(`${serverUrl}createnote`, {
-      method: "POST",
+    fetch(`${serverUrl}updatenote`, {
+      method: "PUT",
       headers: {
         "Content-type": "application/json",
       },
       credentials: "include",
       body: JSON.stringify({
-        notes: data,
+        oldNote: location.state,
+        updatedNote: data,
       }),
     })
       .then((res) => {
@@ -40,7 +42,6 @@ function CreateNote() {
         console.log("Error:", error.message);
       });
   };
-
   return (
     <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
       <div className="form-group">
@@ -67,10 +68,10 @@ function CreateNote() {
         {errors.text && <p className="error">{errors.text.message}</p>}
       </div>
       <button type="submit" className="create-note-button">
-        Create
+        Update
       </button>
     </form>
   );
 }
 
-export default CreateNote;
+export default UpdateNote;

@@ -1,6 +1,6 @@
 import "./Note.css";
-import { FaTrash } from "react-icons/fa";
 import { serverUrl } from "../serverUrl";
+import { Link } from "react-router-dom";
 
 function Note(props) {
   //eslint-disable-next-line
@@ -23,7 +23,20 @@ function Note(props) {
 
   return (
     <div className="note">
-      <FaTrash className="delete-icon" onClick={handleDelete} />
+      <div className="dropdown">
+        <button className="dropbtn">&#8942;</button>
+        <div className="dropdown-content">
+          <Link
+            to={"/updatenote"}
+            state={{ heading: props.heading, text: props.text }}
+          >
+            Update
+          </Link>
+          <a href="/notes" onClick={handleDelete}>
+            Delete
+          </a>
+        </div>
+      </div>
       <h2 className="note-heading">{props.heading}</h2>
       <p className="note-text">{props.text}</p>
     </div>

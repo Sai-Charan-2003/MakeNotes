@@ -33,7 +33,7 @@
   height: 120px;
 }
 
-button {
+.create-note-button {
   padding: 0.5rem 1rem;
   background-color: #008cba;
   color: #ffffff;

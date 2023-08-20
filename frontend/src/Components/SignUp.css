@@ -35,7 +35,7 @@ input {
   border-radius: 4px;
 }
 
-button {
+.signup-button {
   padding: 0.5rem 1rem;
   background-color: #4caf50;
   color: white;

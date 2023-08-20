@@ -12,11 +12,52 @@
   box-sizing: border-box;
 }
 
-.delete-icon {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+/* Style the dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  float: right;
+  margin-left: 10px;
+}
+
+/* Style the dropdown button */
+.dropbtn {
+  background-color: #f1f1f1;
+  color: #333;
+  padding: 8px;
+  border: none;
   cursor: pointer;
+  font-size: 20px; /* Increase font size for better visibility */
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 0;
+}
+
+/* Style the dropdown content links */
+.dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+/* Change color on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown content when dropdown button is hovered */
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 .note-heading {

@@ -19,7 +19,10 @@ dbConnection();
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", `${process.env.FRONTEND_URL}`);
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, DELETE");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, DELETE, PUT"
+  );
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.setHeader("Access-Control-Allow-Credentials", "true");
   next();
@@ -85,13 +88,35 @@ app.post("/createnote", modelMiddleware, jwtVerify, async (req, res) => {
   const oldNotes = await res.locals.userModel
     .find({ username: username })
     .exec();
-  const update = await res.locals.userModel.updateOne(
+  const note = await res.locals.userModel.updateOne(
     { username: username },
     {
       notes: [...oldNotes[0].notes, notes],
     }
   );
-  if (update.modifiedCount === 1) res.json({ notes: notes });
+  if (note.modifiedCount === 1) res.json({ notes: notes });
+  else res.json({ error: "note is note updated" });
+});
+
+app.put("/updatenote", modelMiddleware, jwtVerify, async (req, res) => {
+  const { oldNote, updatedNote } = req.body;
+  const { heading, text } = oldNote;
+  const username = req.username;
+  const allNotes = await res.locals.userModel
+    .find({ username: username })
+    .exec();
+  const list = allNotes[0].notes;
+  const index = list.findIndex(
+    (note) => note.heading === heading && note.text === text
+  );
+  const delNote = list.splice(index, 1, updatedNote);
+  const update = await res.locals.userModel.updateOne(
+    { username: username },
+    {
+      notes: [...list],
+    }
+  );
+  if (update.modifiedCount === 1) res.json({ delNote });
   else res.json({ error: "note is note updated" });
 });
 

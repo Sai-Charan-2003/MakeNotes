@@ -77,7 +77,9 @@ function Login() {
             <p className="error">{errors.password.message}</p>
           )}
         </div>
-        <button type="submit">Login</button>
+        <button className="login-button" type="submit">
+          Login
+        </button>
       </form>
     </div>
   );

@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import CreateNote from "./Components/CreateNote";
+import UpdateNote from "./Components/UpdateNote";
 import NavBar from "./Components/NavBar";
 import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
@@ -21,6 +22,7 @@ function App() {
         <Route element={<NoteNav />}>
           <Route path="notes" element={<RenderNote />} />
           <Route path="createnote" element={<CreateNote />} />
+          <Route path="updatenote" element={<UpdateNote />} />
           <Route path="logout" element={<LogOut />} />
         </Route>
       </Routes>
